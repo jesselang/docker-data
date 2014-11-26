@@ -1,7 +1,11 @@
-hello: hello.asm
-	nasm -o $@ $<
-	chmod +x hello
+start: start.o
+	ld -o $@ $<
+	strip $@
+
+start.o: start.asm
+	nasm -felf64 -o $@ $<
+
+clean:
+	-rm -vf start
 
 .PHONY: clean
-clean:
-	-rm -vf hello

@@ -1,8 +1,11 @@
-# About this Repo
+## Minimal data-only container image for Docker
 
-This is the Git repo of the official Docker image for [hello-world](https://registry.hub.docker.com/_/hello-world/). See the
-Hub page for the full readme on how to use the Docker image and for information
-regarding contributing and issues.
+jesselang/data is a minimal docker image suitable for use as a data-only container. You must specify the volumes you want as part of the container.
 
-The full readme is generated over in [docker-library/docs](https://github.com/docker-library/docs),
-specificially in [docker-library/docs/hello-world](https://github.com/docker-library/docs/tree/master/hello-world).
+Create a data-only container:
+`docker run -d -v /var/lib/mysql --name mysql-data jesselang/data`
+
+Use the container:
+`docker run --volumes-from mysql-data mysql`
+
+Consult the [Data Volume Container](https://docs.docker.com/userguide/dockervolumes/#creating-and-mounting-a-data-volume-container) section of the [Docker User Guide](https://docs.docker.com/userguide/) for more background.
